@@ -8,11 +8,11 @@ _LOGGER = logging.getLogger(__name__)
 
 class P110(PyP100.P100):
 
-    def getEnergyUsage(self):
+    def getEnergyUsage(self, options):
         URL = f"http://{self.ipAddress}/app?token={self.token}"
         Payload = {
-            "method": "get_energy_usage",
-            "requestTimeMils": int(round(time.time() * 1000)),
+            "method": "get_energy_data",
+            "params": options
         }
 
         headers = {
